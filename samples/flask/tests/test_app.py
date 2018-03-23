@@ -11,7 +11,7 @@ def application_client():
 
 
 def test_welcome(application_client):
-    response = app_client.get('/api/1.0/welcome')
+    response = application_client.get('/api/1.0/welcome')
     payload = json.loads(response.data.decode('utf-8'))
 
     assert response.status_code == 200
