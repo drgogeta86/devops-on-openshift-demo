@@ -2,10 +2,10 @@ import os
 
 from flask import Flask, jsonify
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route("/api/1.0/welcome", methods=['GET'])
+@application.route("/api/1.0/welcome", methods=['GET'])
 def welcome():
     response = {
         'message': os.getenv("WELCOME_MESSAGE", default="Hello World!")

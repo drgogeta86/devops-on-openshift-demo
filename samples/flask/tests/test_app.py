@@ -2,15 +2,15 @@ import json
 
 import pytest
 
-from wsgi import app
+from wsgi import application
 
 
 @pytest.fixture()
-def app_client():
-    return app.test_client()
+def application_client():
+    return application.test_client()
 
 
-def test_welcome(app_client):
+def test_welcome(application_client):
     response = app_client.get('/api/1.0/welcome')
     payload = json.loads(response.data.decode('utf-8'))
 
