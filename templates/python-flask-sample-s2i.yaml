@@ -27,8 +27,6 @@ objects:
       script: tox
     source:
       git:
-        httpProxy: ${HTTP_PROXY}
-        httpsProxy: ${HTTPS_PROXY}
         uri: ${SOURCE_REPOSITORY_URL}
         ref: ${SOURCE_REPOSITORY_REF}
       contextDir: ${CONTEXT_DIR}
@@ -81,12 +79,6 @@ objects:
         - env:
           - name: WELCOME_MESSAGE
             value: ${WELCOME_MESSAGE}
-          - name: HTTP_PROXY
-            value: ${HTTP_PROXY}
-          - name: HTTPS_PROXY
-            value: ${HTTPS_PROXY}
-          - name: NO_PROXY
-            value: ${NO_PROXY}
           image: ${APPLICATION_NAME}:latest
           imagePullPolicy: Always
           name: ${APPLICATION_NAME}
@@ -168,7 +160,7 @@ parameters:
   name: HOSTNAME_HTTP
 - description: The URL of the Git repository
   name: SOURCE_REPOSITORY_URL
-  required: https://github.com/ffiore/devops-on-openshift-demo.git
+  value: https://github.com/ffiore/devops-on-openshift-demo.git
 - description: Set this to a branch name, tag or other ref of your extensions repository
     if you are not using the default branch.
   name: SOURCE_REPOSITORY_REF
@@ -176,13 +168,5 @@ parameters:
 - description: Context directory in the repository
   name: CONTEXT_DIR
   value: samples/flask
-- description: HTTP proxy
-  name: HTTP_PROXY
-- description: HTTPS proxy
-  name: HTTPS_PROXY
-- description: NO HTTP(s) proxy
-  name: NO_PROXY
 - description: Welcome message for the application
   name: WELCOME_MESSAGE
-
-
